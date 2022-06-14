@@ -42,7 +42,7 @@ function toNum(s){
 
 function game(){
     let win = 0, loss = 0;
-    for (let i = 0; win + loss < 5; i++){
+    for (let i = 0; (win === 3 || loss === 3); i++){
         let input = toNum(prompt("Please pick either rock, paper, or scissors."));
         if (input < 0){
             i -= 1;
@@ -53,4 +53,6 @@ function game(){
         if (result < 0) loss +=1;
         else if (result > 0) win +=1;
     }
+    if (win > loss) console.log(`You won the match ${win} to ${loss}.`);
+    else console.log(`You lost the match ${win} to ${loss}.`);
 }
