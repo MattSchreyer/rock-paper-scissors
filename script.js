@@ -42,17 +42,28 @@ function toNum(s){
 
 function game(){
     let win = 0, loss = 0;
-    for (let i = 0; (win === 3 || loss === 3); i++){
-        let input = toNum(prompt("Please pick either rock, paper, or scissors."));
+    for (let i = 0; (win != 3 && loss != 3); i++){
+        let answer = prompt("Please pick either rock, paper, or scissors.");
+        let input = toNum(answer);
         if (input < 0){
             i -= 1;
             alert("Invalid choice, please try again.")
             continue;
         }
         let result = playRound(input);
-        if (result < 0) loss +=1;
-        else if (result > 0) win +=1;
+        let comp = translate((input + 2) % 3);
+        if (result < 0) {
+            loss +=1;
+            alert(`Round ${i}: You lost, ${comp} beats ${translate(input)}.`);
+        }
+        else if (result > 0) {
+            win +=1;
+            alert(`Round ${i}: You won, ${translate(input)} beats ${comp}.`);
+        }
+        else alert(`It's a tie! Both players picked ${translate(input)}`);
     }
     if (win > loss) console.log(`You won the match ${win} to ${loss}.`);
     else console.log(`You lost the match ${win} to ${loss}.`);
 }
+
+game();
