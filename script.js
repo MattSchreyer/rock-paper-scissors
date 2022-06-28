@@ -34,11 +34,11 @@ function result(num){
     if (win == 3 || loss == 3){
         if (win > loss){
             let temp = resultDiv.textContent;
-            resultDiv.textContent = `${temp}   You won the match ${win} to ${loss}.`;
+            resultDiv.textContent = `${temp}   You won the match ${win} to ${loss}!`;
         }
         else{
             let temp = resultDiv.textContent;
-            resultDiv.textContent = `${temp}   You lost the match ${win} to ${loss}.`;
+            resultDiv.textContent = `${temp}   You lost the match ${win} to ${loss}!`;
         };
     }
 }
